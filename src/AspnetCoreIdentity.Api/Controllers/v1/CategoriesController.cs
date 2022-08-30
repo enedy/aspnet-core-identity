@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspnetCoreIdentity.Api.Controllers.v1
 {
-    [ApiVersion("1.0")]
-    public class CategoryController : ApiControllerBase
+    [Route("api/v1/categories")]
+    public class CategoriesController : ApiControllerBase
     {
         private ICategoryRepository _categoryRepository;
 
-        public CategoryController(ICategoryRepository categoryRepository) =>
+        public CategoriesController(ICategoryRepository categoryRepository) =>
             _categoryRepository = categoryRepository;
 
         [HttpGet]

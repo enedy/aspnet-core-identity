@@ -14,7 +14,7 @@ namespace AspnetCoreIdentity.Domain.Services.Shared
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync() =>
             await _repositoryBase.GetAllAsync();
 
-        public virtual async Task<TEntity?> GetByIdAsync(int id) =>
+        public virtual async Task<TEntity?> GetByIdAsync(Guid id) =>
             await _repositoryBase.GetByIdAsync(id);
 
         public virtual async Task<object> AddAsync(TEntity objeto) =>
@@ -26,7 +26,7 @@ namespace AspnetCoreIdentity.Domain.Services.Shared
         public virtual async Task DeleteAsync(TEntity objeto) =>
             await _repositoryBase.DeleteAsync(objeto);
 
-        public virtual async Task DeleteByIdAsync(int id) =>
+        public virtual async Task DeleteByIdAsync(Guid id) =>
             await _repositoryBase.DeleteByIdAsync(id);
 
         public void Dispose() =>
