@@ -14,20 +14,20 @@ namespace AspnetCoreIdentity.Api.Controllers.v1
             _categoryRepository = categoryRepository;
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryResponse>>> ObterTodas()
+        public async Task<ActionResult<IEnumerable<CategoryResponseDTO>>> GetAllAsync()
         {
             var categories = await _categoryRepository.GetAllAsync();
-            return Ok(categories.Select(category => CategoryResponse.ConvertToResponse(category)));
+            return Ok(categories.Select(category => CategoryResponseDTO.ConvertToResponse(category)));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryResponse>> ObterPorId(Guid id)
+        public async Task<ActionResult<CategoryResponseDTO>> GetByIdAsync(Guid id)
         {
             var category = await _categoryRepository.GetByIdAsync(id);
             if (category is null)
                 return NotFound();
 
-            return Ok(CategoryResponse.ConvertToResponse(category));
+            return Ok(CategoryResponseDTO.ConvertToResponse(category));
         }
     }
 }

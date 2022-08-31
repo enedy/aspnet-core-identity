@@ -5,19 +5,18 @@ namespace AspnetCoreIdentity.Domain.Entities
     public class Product : Entity
     {
         protected Product() { }
-        public Product(string code, int categoryId, Category category, string name, string description, decimal price, DateTime creationDate)
+        public Product(string code, Guid categoryId, string name, string description, decimal price)
         {
             Code = code;
             CategoryId = categoryId;
-            Category = category;
             Name = name;
             Description = description;
             Price = price;
-            CreationDate = creationDate;
+            CreationDate = DateTime.UtcNow;
         }
 
         public string Code { get; private set; }
-        public int CategoryId { get; private set; }
+        public Guid CategoryId { get; private set; }
         public Category Category { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
