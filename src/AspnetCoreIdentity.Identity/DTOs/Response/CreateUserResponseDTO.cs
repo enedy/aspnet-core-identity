@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AspnetCoreIdentity.Identity.DTOs
+namespace AspnetCoreIdentity.Identity.DTOs.Response
 {
     public class CreateUserResponseDTO
     {

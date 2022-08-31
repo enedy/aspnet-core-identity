@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace AspnetCoreIdentity.Identity.DTOs
+namespace AspnetCoreIdentity.Identity.DTOs.Response
 {
     public class UserLoginReponseDTO
     {

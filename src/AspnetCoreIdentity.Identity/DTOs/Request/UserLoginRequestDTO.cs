@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspnetCoreIdentity.Identity.DTOs
+namespace AspnetCoreIdentity.Identity.DTOs.Request
 {
     public class UserLoginRequestDTO
     {

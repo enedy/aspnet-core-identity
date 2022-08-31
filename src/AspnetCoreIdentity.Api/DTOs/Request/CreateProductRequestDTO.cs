@@ -1,10 +1,10 @@
 ﻿using AspnetCoreIdentity.Domain.Entities;
 
-namespace AspnetCoreIdentity.Api.DTOs
+namespace AspnetCoreIdentity.Api.DTOs.Request
 {
-    public class InsertProductRequestDTO
+    public class CreateProductRequestDTO
     {
-        public InsertProductRequestDTO(string code, Guid categoryId, string name, string description, decimal price)
+        public CreateProductRequestDTO(string code, Guid categoryId, string name, string description, decimal price)
         {
             Code = code;
             CategoryId = categoryId;
@@ -19,15 +19,15 @@ namespace AspnetCoreIdentity.Api.DTOs
         public string Description { get; set; }
         public decimal Price { get; set; }
 
-        public static Product ConverterToEntity(InsertProductRequestDTO productDTO)
+        public static Product ConverterToEntity(CreateProductRequestDTO createProductRequestDTO)
         {
             return new Product
             (
-                productDTO.Code,
-                productDTO.CategoryId,
-                productDTO.Name,
-                productDTO.Description,
-                productDTO.Price
+                createProductRequestDTO.Code,
+                createProductRequestDTO.CategoryId,
+                createProductRequestDTO.Name,
+                createProductRequestDTO.Description,
+                createProductRequestDTO.Price
             );
         }
     }

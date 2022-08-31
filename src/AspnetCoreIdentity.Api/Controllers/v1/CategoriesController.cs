@@ -1,5 +1,5 @@
 ﻿using AspnetCoreIdentity.Api.Controllers.Shared;
-using AspnetCoreIdentity.Api.DTOs;
+using AspnetCoreIdentity.Api.DTOs.Response;
 using AspnetCoreIdentity.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
 

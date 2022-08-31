@@ -1,5 +1,6 @@
 ﻿using AspnetCoreIdentity.Api.Controllers.Shared;
-using AspnetCoreIdentity.Api.DTOs;
+using AspnetCoreIdentity.Api.DTOs.Request;
+using AspnetCoreIdentity.Api.DTOs.Response;
 using AspnetCoreIdentity.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,9 +34,9 @@ namespace AspnetCoreIdentity.Api.Controllers.v1
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> AddAsync(InsertProductRequestDTO insertProductDTO)
+        public async Task<ActionResult<int>> AddAsync(CreateProductRequestDTO insertProductDTO)
         {
-            var product = InsertProductRequestDTO.ConverterToEntity(insertProductDTO);
+            var product = CreateProductRequestDTO.ConverterToEntity(insertProductDTO);
             var id = (int)await _productService.AddAsync(product);
             return CreatedAtAction(nameof(GetByIdAsync), new { id = id }, id);
         }

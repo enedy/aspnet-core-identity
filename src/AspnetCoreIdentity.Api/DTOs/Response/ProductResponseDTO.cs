@@ -1,10 +1,10 @@
 ﻿using AspnetCoreIdentity.Domain.Entities;
 
-namespace AspnetCoreIdentity.Api.DTOs
+namespace AspnetCoreIdentity.Api.DTOs.Response
 {
     public class ProductResponseDTO
     {
-        public ProductResponseDTO(Guid id, string code, string name, string description, decimal price, DateTime creationDate, 
+        public ProductResponseDTO(Guid id, string code, string name, string description, decimal price, DateTime creationDate,
             CategoryResponseDTO categoryResponse)
         {
             Id = id;

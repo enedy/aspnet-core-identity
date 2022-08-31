@@ -1,4 +1,5 @@
-﻿using AspnetCoreIdentity.Identity.DTOs;
+﻿using AspnetCoreIdentity.Identity.DTOs.Request;
+using AspnetCoreIdentity.Identity.DTOs.Response;
 
 namespace AspnetCoreIdentity.Identity.Interfaces
 {

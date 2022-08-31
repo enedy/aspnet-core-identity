@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using AspnetCoreIdentity.Identity.Configurations;
 using AspnetCoreIdentity.Identity.Interfaces;
-using AspnetCoreIdentity.Identity.DTOs;
+using AspnetCoreIdentity.Identity.DTOs.Request;
+using AspnetCoreIdentity.Identity.DTOs.Response;
 
 namespace AspnetCoreIdentity.Identity.Services
 {

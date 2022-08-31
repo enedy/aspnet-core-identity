@@ -1,6 +1,6 @@
 ﻿using AspnetCoreIdentity.Domain.Entities;
 
-namespace AspnetCoreIdentity.Api.DTOs
+namespace AspnetCoreIdentity.Api.DTOs.Response
 {
     public class CategoryResponseDTO
     {
