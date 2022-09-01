@@ -38,7 +38,7 @@ namespace AspnetCoreIdentity.Identity.Services
                 await _userManager.SetLockoutEnabledAsync(identityUser, false);
 
             var createUserResponse = new CreateUserResponseDTO(result.Succeeded);
-            if (!result.Succeeded && result.Errors.Any())
+            if (result.Errors.Any())
                 createUserResponse.AddErrors(result.Errors.Select(r => r.Description));
 
             return createUserResponse;
@@ -85,8 +85,8 @@ namespace AspnetCoreIdentity.Identity.Services
         private async Task<UserLoginReponseDTO> GenerateCredetials(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            var accessTokenClaims = await GetClaims(user, addUserClaims: true);
-            var refreshTokenClaims = await GetClaims(user, addUserClaims: false);
+            var accessTokenClaims = await GetClaimsAndRoles(user, addUserClaims: true);
+            var refreshTokenClaims = await GetClaimsAndRoles(user, addUserClaims: false);
 
             var expirationDateAccessToken = DateTime.Now.AddSeconds(_jwtOptions.AccessTokenExpiration);
             var expirationDateRefreshToken = DateTime.Now.AddSeconds(_jwtOptions.RefreshTokenExpiration);
@@ -115,7 +115,7 @@ namespace AspnetCoreIdentity.Identity.Services
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
 
-        private async Task<IList<Claim>> GetClaims(IdentityUser user, bool addUserClaims)
+        private async Task<IList<Claim>> GetClaimsAndRoles(IdentityUser user, bool addUserClaims)
         {
             var claims = new List<Claim>();
 
