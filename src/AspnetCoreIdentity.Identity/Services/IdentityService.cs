@@ -60,7 +60,7 @@ namespace AspnetCoreIdentity.Identity.Services
                 else if (result.RequiresTwoFactor)
                     userLoginResponse.AddError("You need to confirm login in your second factor of authentication");
                 else
-                    userLoginResponse.AddError("Username or password is incorrect");
+                    userLoginResponse.AddError("Username or password are incorrect");
             }
 
             return userLoginResponse;
@@ -129,7 +129,7 @@ namespace AspnetCoreIdentity.Identity.Services
             {
                 var userClaims = await _userManager.GetClaimsAsync(user);
                 var roles = await _userManager.GetRolesAsync(user);
-
+                
                 claims.AddRange(userClaims);
 
                 foreach (var role in roles)

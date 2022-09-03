@@ -1,7 +1,10 @@
-﻿using AspnetCoreIdentity.Api.Controllers.Shared;
+﻿using AspnetCoreIdentity.Api.Attributes;
+using AspnetCoreIdentity.Api.Controllers.Shared;
 using AspnetCoreIdentity.Api.DTOs.Request;
 using AspnetCoreIdentity.Api.DTOs.Response;
 using AspnetCoreIdentity.Domain.Interfaces.Services;
+using AspnetCoreIdentity.Identity.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspnetCoreIdentity.Api.Controllers.v1
@@ -14,6 +17,7 @@ namespace AspnetCoreIdentity.Api.Controllers.v1
         public ProductsController(IProductService productService) =>
             _productService = productService;
 
+        [ClaimsAuthorize(ClaimTypes.Produto, ClaimValues.Read)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductResponseDTO>>> GetAllAsync()
         {
@@ -22,6 +26,7 @@ namespace AspnetCoreIdentity.Api.Controllers.v1
             return Ok(productsResponse);
         }
 
+        [ClaimsAuthorize(ClaimTypes.Produto, ClaimValues.Read)]
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductResponseDTO>> GetByIdAsync(Guid id)
         {
@@ -33,6 +38,7 @@ namespace AspnetCoreIdentity.Api.Controllers.v1
             return Ok(productResponse);
         }
 
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<ActionResult<int>> AddAsync(CreateProductRequestDTO insertProductDTO)
         {
@@ -41,6 +47,8 @@ namespace AspnetCoreIdentity.Api.Controllers.v1
             return CreatedAtAction(nameof(GetByIdAsync), new { id = id }, id);
         }
 
+        [Authorize(Policy = Policies.CommercialTime)]
+        [ClaimsAuthorize(ClaimTypes.Produto, ClaimValues.Delete)]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteByIdAsync(Guid id)
         {

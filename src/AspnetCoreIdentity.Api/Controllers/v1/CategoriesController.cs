@@ -1,10 +1,12 @@
 ﻿using AspnetCoreIdentity.Api.Controllers.Shared;
 using AspnetCoreIdentity.Api.DTOs.Response;
 using AspnetCoreIdentity.Domain.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspnetCoreIdentity.Api.Controllers.v1
 {
+    [Authorize]
     [Route("api/v1/categories")]
     public class CategoriesController : ApiControllerBase
     {
